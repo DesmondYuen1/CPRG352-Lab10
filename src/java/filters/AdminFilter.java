@@ -1,9 +1,6 @@
 package filters;
 
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -23,9 +20,9 @@ public class AdminFilter implements Filter {
         HttpSession session = httpRequest.getSession();
         String email = (String)session.getAttribute("email");
         
-        if(email == null) {
+        if(email.equals("cprg352+admin@gmail.com") == false) {
             HttpServletResponse httpResponse = (HttpServletResponse)response;
-            httpResponse.sendRedirect("login");
+            httpResponse.sendRedirect("notes");
             return; 
         }
         
